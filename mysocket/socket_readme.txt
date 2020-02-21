@@ -42,6 +42,26 @@ recvfrom() UDP接收数据，返回远端的IP和端口，返回值是(data,addr
 close()关闭socket
 
 
+注意：
+python3 和 python2 关于 input()函数的使用是不同的！！！
+
+python3:
+str1 = input("input str:")
+
+input str:123
+str1 =  123
+
+input str:hero
+str1 =  hero
+type str1 =  <class 'str'>
+----------------------------
+python2:
+str1 = input("input str:")
+input str:123
+type str1 =  <class 'int'>
+
+input str:hero
+会报错：hero name undefined
 
 
 
