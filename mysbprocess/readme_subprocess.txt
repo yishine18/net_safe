@@ -43,9 +43,6 @@ classPopen(args,bufsize=0,executable=None,stdin=None,stdout=None,stderr=None,pre
 
 classPopen("notepad","test.txt")
 
-
-
-
 import subprocess
 
 #这是一个包含程序参数的列表
@@ -71,6 +68,24 @@ PING www.baidu.com (14.215.177.39) 56(84) bytes of data.
 64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=3 ttl=54 time=25.5 ms
 64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=4 ttl=54 time=18.1 ms
 64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=5 ttl=54 time=22.0 ms
+
+
+
+
+import subprocess
+def run_command(command):
+	command = command.rstrip()
+	try:
+		child = subprocess.check_output(command,shell=True)
+	except Exception as e:
+		child = "can't execute the command.."
+	return child
+execute = "ls /root/gitskills/net_safe/mysbprocess"
+output = run_command(execute)
+print(output)
+
+b'mysubprocess.py\nreadme_subprocess.txt\nsub001.py\n'
+[Finished in 0.1s]
 
 --- www.baidu.com ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 4005ms
