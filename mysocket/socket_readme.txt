@@ -64,4 +64,18 @@ input str:hero
 会报错：hero name undefined
 
 
+main()方法学习
+
+def gohome():
+    print("go home")
+
+def gohome2():
+    print("go home2")
+
+def main():
+    gohome()
+    gohome2()
+
+if __name__ == '__main__':
+    main()
 
