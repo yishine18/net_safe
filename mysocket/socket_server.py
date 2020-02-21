@@ -22,37 +22,82 @@
 #     print ("I have a dream")
 #     goon = False
 
+# import socket
+
+# #in python3.7
+# #if in python2.X ,input() will can't work!
+
+# sk=socket.socket()
+# ip_port=('127.0.0.1',2466)
+# sk.bind(ip_port)
+# sk.listen(5)
+# b_data = b'quit'
+# print("type b_data:",type(b_data)) #type b_data: <class 'bytes'>
+# print("waiting...")
+# conn, address = sk.accept()
+# msg = "this is server !!!"
+# conn.send(msg.encode())
+# data = conn.recv(1024)
+# while True:
+
+#     print("type data",type(data)) #type data <class 'bytes'>
+#     print("type data.decode", type(data.decode())) #type data.decode <class 'str'>
+#     print("this is from client: ",data.decode())
+#     if data == b'quit':
+#         print("ready to quit!!!")
+#         break
+#     else:
+#         msg_input = input("input :")
+#         conn.send(bytes(msg_input, encoding="gb2312"))
+#         if msg_input == "quit":
+#             print("server ready to quit!")
+#             break
+#     print("waiting to receive from client:")
+#     data = conn.recv(1024)
+
+# conn.close()
+
 import socket
 
 #in python3.7
 #if in python2.X ,input() will can't work!
 
-sk=socket.socket()
-ip_port=('127.0.0.1',2466)
-sk.bind(ip_port)
-sk.listen(5)
-b_data = b'quit'
-print("type b_data:",type(b_data)) #type b_data: <class 'bytes'>
-print("waiting...")
-conn, address = sk.accept()
-msg = "this is server !!!"
-conn.send(msg.encode())
-data = conn.recv(1024)
-while True:
-
-    print("type data",type(data)) #type data <class 'bytes'>
-    print("type data.decode", type(data.decode())) #type data.decode <class 'str'>
-    print("this is from client: ",data.decode())
-    if data == b'quit':
-        print("ready to quit!!!")
-        break
-    else:
-        msg_input = input("input :")
-        conn.send(bytes(msg_input, encoding="gb2312"))
-        if msg_input == "quit":
-            print("server ready to quit!")
-            break
-    print("waiting to receive from client:")
+def server_socket():
+    sk = socket.socket()
+    ip_port = ('127.0.0.1', 2346)
+    sk.bind(ip_port)
+    sk.listen(5)
+    b_data = b'quit'
+    print("type b_data:", type(b_data))  # type b_data: <class 'bytes'>
+    print("waiting...")
+    conn, address = sk.accept()
+    msg = "this is server !!!"
+    conn.send(msg.encode())
     data = conn.recv(1024)
+    while True:
 
-conn.close()
+        print("type data", type(data))  # type data <class 'bytes'>
+        print("type data.decode", type(data.decode()))  # type data.decode <class 'str'>
+        print("this is from client: ", data.decode())
+        if data == b'quit':
+            print("ready to quit!!!")
+            break
+        else:
+            msg_input = input("input :")
+            conn.send(bytes(msg_input, encoding="gb2312"))
+            if msg_input == "quit":
+                print("server ready to quit!")
+                break
+        print("waiting to receive from client:")
+        data = conn.recv(1024)
+    conn.close()
+
+
+# server_socket()
+
+
+def main():
+    server_socket()
+
+if __name__ == '__main__':
+    main()
